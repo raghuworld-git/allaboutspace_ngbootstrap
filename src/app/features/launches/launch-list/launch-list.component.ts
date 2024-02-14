@@ -1,15 +1,25 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { LaunchList } from '../../../shared/models/launches/launch-list.model';
+import { EmptyTextPipe } from '../../../utilities/pipes/empty-text.pipe';
+import { StatusColorService } from '../../../utilities/service/status-color.service';
 
 @Component({
   selector: 'app-launch-list',
   standalone: true,
-  imports: [],
+  imports: [EmptyTextPipe, RouterLink],
   templateUrl: './launch-list.component.html',
   styleUrl: './launch-list.component.scss',
 })
 export class LaunchListComponent implements OnInit {
-  @Input() launchType: string = '';
+
+  constructor(private route: ActivatedRoute, private statusColorService: StatusColorService) { }
+
+  private previousLaunchType: string = "previous";
+  private upcomingLaunchType: string = "upcoming";
+
+  launchType: string | null = '';
 
   launchList: LaunchList[] = [
     {
@@ -48,9 +58,17 @@ export class LaunchListComponent implements OnInit {
     },
   ];
   ngOnInit(): void {
-    if (this.launchType.toLocaleLowerCase() == 'upcoming') {
-    } else if (this.launchType.toLocaleLowerCase() == 'previous') {
-    } else {
-    }
+    this.route.queryParamMap.pipe(map((params: ParamMap) => {
+      this.launchType = params.get('type');
+      if (this.launchType === null) {
+        this.launchType = this.upcomingLaunchType;
+      } else if (this.launchType.toLocaleLowerCase() === this.previousLaunchType || this.launchType.toLocaleLowerCase() === this.upcomingLaunchType) {
+        this.launchType = this.launchType.toLocaleLowerCase();
+      }
+    }));
+  }
+
+  getStatusColor(status: string) {
+    return this.statusColorService.getTableColor(status);
   }
 }
