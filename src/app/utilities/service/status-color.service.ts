@@ -7,7 +7,7 @@ export class StatusColorService {
 
   constructor() { }
 
-  getTableColor(status: string): string {
+  getStatusColor(status: string): string {
     let statusColor: string = '';
     switch (status.toLocaleLowerCase()) {
       case "In Flight".toLocaleLowerCase():

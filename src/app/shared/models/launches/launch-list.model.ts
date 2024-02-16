@@ -13,6 +13,6 @@ export interface LaunchList {
   location: string,
   //landing: string,
   //landing_success: string,
-  //orbit: string,
+  orbit: string,
   image: string | null
 }

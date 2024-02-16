@@ -1,52 +1,52 @@
-
 <div class="row pt-3">
-  <div class="col text-uppercase">
-    <h6>Upcoming</h6>
+  <div class="col text-uppercase text-warning">
+    <h6>Upcoming Launches</h6>
   </div>
 </div>
 
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
     <div class="row">
+
       @if(launchList.length >0){ @for(item of launchList;track item.id ){
-      <div class="col-12 p-2 my-1 shadow  bg-body-tertiary rounded">
-        <div class="row">
-            <div class="col text-center">
-              <h6 class="text-uppercase" style="font-size: 85%;">{{ item.name }}</h6>  
-            </div>
-        </div> 
+      <div class="col-12 p-2 my-1 shadow bg-body-tertiary rounded">
         <div class="row g-1">
-            <div class="col-4">
-                <img class="rounded w-100" [src]="item.image" [alt]="item.name" style="height: 45vh; object-fit: cover; object-position: center;" />
-            </div>
-            <div class="col-8 text-center" style="font-size: 78%;">
-              <table class="table  text-center">
-                <thead>
-                  <tr>
-                    <td style="border-top-left-radius: 0.375rem;">
-                      Status
-                    </td>
-                    <td style="border-top-right-radius: 0.375rem;">
-                      Launches in 
-                    </td>                   
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td [class]="'table-'+getStatusColor(item.status.abbrev)" style="border-bottom-left-radius: 0.375rem;font-weight: bold;">
-                      {{ item.status.abbrev | emptyText }}
-                    </td>
-                    <td style="border-bottom-right-radius: 0.375rem;">
-                      5 weeks, 4 days
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <p><span style="font-weight: bold;">Agency : </span> {{ item.lsp_name | emptyText }}</p>
-              <p><span style="font-weight: bold;">Location : </span> {{ item.location | emptyText }}</p>
-              <p><span style="font-weight: bold;">NET : </span> {{ item.net | emptyText }}</p>
-              <a class="text-uppercase" [routerLink]="['details',item.slug]">For more Details</a>
-            </div>
+          <div class="col-4">
+            <img
+              class="rounded w-100"
+              [src]="item.image"
+              [alt]="item.name"
+              style="height: 45vh; object-fit: cover; object-position: center"
+            />
+          </div>
+          <div class="col-8 px-4">
+            <h6>{{ item.name }}</h6>
+            <hr />
+            <section style="font-size: 85%">
+              <span
+                class="badge"
+                [class]="['text-bg-' + getStatusColor(item.status.abbrev)]"
+                >{{ item.status.name }}</span
+              >
+              <div class="pt-2">
+                <b>Agency : </b> {{ item.lsp_name | emptyText }}
+              </div>
+              <div class="pt-2">
+                <b>Location : </b> {{ item.location | emptyText }}
+              </div>
+              <div class="pt-2">
+                <b>Orbit : </b> {{ item.orbit | emptyText }}
+              </div>r
+              <div class="pt-2">
+                <b>NET : </b> {{ item.net| emptyText }}
+              </div>
+              <div class="d-grid gap-2 pt-4">
+                <button class="btn btn-sm btn-outline-light" type="button">
+                  For  details
+                </button>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
       } }

@@ -8,15 +8,17 @@
   src: url("./assets/fonts/Meteoric-light.otf") format("truetype");
 }
 
-body {
-  font-family: logo-font;
-}
-
+.logo-font,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-weight: bolder !important;
+  font-family: logo-font !important;
+}
+
+body {
+  font-family: logo-font;
+  font-optical-sizing: auto;
 }
