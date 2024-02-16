@@ -16,13 +16,24 @@ export class LaunchesService {
     this.url = `${environment.LL2_BASE_URL}/${this.endpoint}`;
   }
 
-  getLaunchesList(
+  getUpcomingLaunchesList(
     limit: number = 8,
     offset: number = 10
   ): Observable<CommonResponse<LaunchList>> {
     let params = new HttpParams().set('limit', limit).set('offset', offset);
     return this.restService.getList<CommonResponse<LaunchList>>(
-      this.url,
+      `${this.url}/GetUpcomingLaunches`,
+      params
+    );
+  }
+
+  getPastLaunchesList(
+    limit: number = 8,
+    offset: number = 10
+  ): Observable<CommonResponse<LaunchList>> {
+    let params = new HttpParams().set('limit', limit).set('offset', offset);
+    return this.restService.getList<CommonResponse<LaunchList>>(
+      `${this.url}/GetPastLaunches`,
       params
     );
   }
