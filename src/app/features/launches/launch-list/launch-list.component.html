@@ -1,5 +1,5 @@
 <div class="row pt-3 pb-2">
-  <div class="col text-uppercase text-warning">
+  <div class="col-12 text-uppercase text-warning">
     <ul class="nav nav-underline logo-font text-uppercase">
       <li class="nav-item">
         <a
@@ -26,8 +26,13 @@
 </div>
 
 <div class="pt-2">
-<ngb-pagination size="sm" [collectionSize]="120" [(page)]="page" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" />
+  <app-pagination
+    [totalItemsCount]="totalItemCount"
+    (pageChangeEvent)="onPageChangeEvent($event)"  
+    [disablePagination]="false"
+  ></app-pagination>
 </div>
+
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
     <div class="row">
@@ -80,7 +85,10 @@
         <div class="row g-1">
           <div class="col-4">
             <p class="placeholder-glow">
-              <span class="placeholder placeholder-sm col-12 rounded" style="height: 33vh;"></span>
+              <span
+                class="placeholder placeholder-sm col-12 rounded"
+                style="height: 33vh"
+              ></span>
             </p>
           </div>
           <div class="col-8 px-3">
