@@ -1,27 +1,6 @@
 <div class="row pt-3 pb-2">
     <div class="col-12 text-uppercase text-warning">
-      <ul class="nav nav-underline logo-font text-uppercase">
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            style="color: white"
-            [routerLink]="['/launches']"
-            [queryParams]="{ type: 'upcoming' }"
-            routerLinkActive="active text-warning-emphasis"
-            >Upcoming Launches</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            style="color: white"
-            [routerLink]="['/launches']"
-            [queryParams]="{ type: 'past' }"
-            routerLinkActive="active text-warning-emphasis"
-            >Past Launches</a
-          >
-        </li>
-      </ul>
+      <h6>Previous launches</h6>
     </div>
   </div>
   
@@ -29,7 +8,8 @@
     <app-pagination
       [totalItemsCount]="totalItemCount"
       (pageChangeEvent)="onPageChangeEvent($event)"  
-      [disablePagination]="false"
+      [disablePagination]="disablePagination"
+      [pageSize]="pageLimit"
     ></app-pagination>
   </div>
   

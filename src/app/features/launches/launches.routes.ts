@@ -1,15 +1,20 @@
 import { Routes } from '@angular/router';
 import { LaunchDetailComponent } from './launch-detail/launch-detail.component';
-import { LaunchesContainerComponent } from './launches-container/launches-container.component';
-import { UpcomingLaunchesComponent } from './launches-container/upcoming-launches/upcoming-launches.component';
+import { UpcomingLaunchesComponent } from './launches/upcoming-launches/upcoming-launches.component';
+import { PastLaunchesComponent } from './launches/past-launches/past-launches.component';
 
 export const routes: Routes = [
   {
-    path: '', component: LaunchesContainerComponent, children: [
-      {
-        path: 'upcoming', component: UpcomingLaunchesComponent,
-      }
-    ]
+    path: 'upcoming',
+    component: UpcomingLaunchesComponent,
   },
-  { path: 'details/:slug', pathMatch: 'full', component: LaunchDetailComponent },
+  {
+    path: 'previous',
+    component: PastLaunchesComponent,
+  },
+  {
+    path: 'details/:slug',
+    pathMatch: 'full',
+    component: LaunchDetailComponent,
+  },
 ];
