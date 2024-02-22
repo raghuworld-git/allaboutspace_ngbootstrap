@@ -16,34 +16,36 @@ import { PaginationComponent } from '../../../shared/components/pagination/pagin
 @Component({
   selector: 'app-launches-list',
   standalone: true,
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     RouterLink,
     RouterLinkActive,
     EmptyTextPipe,
-    PaginationComponent],
+    PaginationComponent,
+  ],
   templateUrl: './launches-list.component.html',
-  styleUrl: './launches-list.component.scss'
+  styleUrl: './launches-list.component.scss',
 })
 export class LaunchesListComponent implements OnInit {
-
   constructor(
     private route: ActivatedRoute,
     private statusColorService: StatusColorService,
     private launchService: LaunchesService
-  ) { }
-
+  ) {}
 
   launchList$!: Observable<CommonResponse<LaunchList>>;
+  launchType: string | null | undefined = '';
   totalItemCount: number = 0;
   disablePagination: boolean = false;
   pageLimit = 5;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      if (params.get('launchtype') === 'upcoming') {
+      this.totalItemCount = 0;
+      this.launchType = params.get('launchtype')?.toLocaleLowerCase();
+      if (this.launchType === 'upcoming') {
         this.getUpcomingLaunchesList(this.pageLimit, 0);
-      }
-      else {
+      } else {
         this.getPastLaunchesList(this.pageLimit, 0);
       }
     });
@@ -81,7 +83,10 @@ export class LaunchesListComponent implements OnInit {
 
   onPageChangeEvent(currentPage: number) {
     let offset: number = (currentPage - 1) * this.pageLimit;
-    this.getUpcomingLaunchesList(this.pageLimit, offset);
+    if (this.launchType === 'upcoming') {
+      this.getUpcomingLaunchesList(this.pageLimit, offset);
+    } else {
+      this.getPastLaunchesList(this.pageLimit, offset);
+    }
   }
-
 }

@@ -1,0 +1,12 @@
+:host ::ng-deep .page-item.active .page-link {
+  color: #ffc107 !important;
+  background-color: #212529;
+  border-color: #495057;
+  font-weight: bold;
+}
+
+:host ::ng-deep .page-item .page-link {
+    color: rgba(255, 255, 255, 0.694) !important;
+    background-color: #212529;
+    border-color: #495057;
+  }
