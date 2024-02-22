@@ -1,16 +1,14 @@
 import { Routes } from '@angular/router';
 import { LaunchDetailComponent } from './launch-detail/launch-detail.component';
-import { UpcomingLaunchesComponent } from './launches/upcoming-launches/upcoming-launches.component';
-import { PastLaunchesComponent } from './launches/past-launches/past-launches.component';
+import { launchTypesRestictionGuard } from './launch-types-restriction.guard';
+import { LaunchesListComponent } from './launches-list/launches-list.component';
+
 
 export const routes: Routes = [
   {
-    path: 'upcoming',
-    component: UpcomingLaunchesComponent,
-  },
-  {
-    path: 'previous',
-    component: PastLaunchesComponent,
+    path: ':launchtype',
+    component: LaunchesListComponent,
+    canActivate : [launchTypesRestictionGuard]
   },
   {
     path: 'details/:slug',

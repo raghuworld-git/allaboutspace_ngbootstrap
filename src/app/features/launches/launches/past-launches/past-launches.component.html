@@ -3,7 +3,10 @@
       <h6>Previous launches</h6>
     </div>
   </div>
-  
+  <nav class="nav text-uppercase logo-font">
+    <a class="nav-link" [routerLink]="['/launches','upcoming']" routerLinkActive="active text-warning"  aria-current="page">Upcoming</a>
+    <a class="nav-link" [routerLink]="['/launches','previous']" routerLinkActive="active text-warning"  aria-current="page">Previous</a>
+  </nav>
   <div class="pt-2">
     <app-pagination
       [totalItemsCount]="totalItemCount"
