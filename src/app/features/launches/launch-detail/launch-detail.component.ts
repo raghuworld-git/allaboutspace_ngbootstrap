@@ -6,6 +6,9 @@ import {
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
+import { LaunchesService } from '../launches.service';
+import { Observable } from 'rxjs';
+import { LaunchDetail } from '../../../shared/models/launches/launch-detail.model';
 
 @Component({
   selector: 'app-launch-detail',
@@ -15,13 +18,15 @@ import {
   styleUrl: './launch-detail.component.scss',
 })
 export class LaunchDetailComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private launchService: LaunchesService) { }
 
-  slug: string | null = '';
+  id: string | null = '';
+  launchDetails$ !: Observable<LaunchDetail>;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.slug = params.get('slug');
+      this.id = params.get('id');
+      this.launchDetails$ = this.launchService.getLaunchDetails(this.id!);
     });
   }
 }

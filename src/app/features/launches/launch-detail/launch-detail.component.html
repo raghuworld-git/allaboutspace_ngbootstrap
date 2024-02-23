@@ -1,1 +1,31 @@
-{{ this.slug }}
+@if(launchDetails$ | async ; as item){
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+  <div class="row">
+    <div class="col-12 text-capitalize">
+      <h6>{{ item.name }}</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <img
+        class="rounded w-100"
+        [src]="item.image"
+        [alt]="item.name"
+        style="height: 45vh; object-fit: cover; object-position: center"
+      />
+    </div>
+    <div class="col-lg-6 pt-2">
+      <div class="card text-bg-dark mb-3">
+        <div class="card-header text-center">NET</div>
+        <div class="card-body">
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}

@@ -11,7 +11,7 @@ export const routes: Routes = [
     canActivate : [launchTypesRestictionGuard]
   },
   {
-    path: 'details/:slug',
+    path: 'details/:id',
     pathMatch: 'full',
     component: LaunchDetailComponent,
   },

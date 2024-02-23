@@ -4,5 +4,5 @@
 
 export const environment = {
     production: false,
-    LL2_BASE_URL:'https://localhost:44311/api'
+    LL2_BASE_URL:'https://raghuworld1992-001-site1.ctempurl.com/api'
   };

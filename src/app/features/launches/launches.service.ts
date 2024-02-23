@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CommonResponse } from '../../shared/models/common-response.model';
 import { LaunchList } from '../../shared/models/launches/launch-list.model';
 import { HttpParams } from '@angular/common/http';
+import { LaunchDetail } from '../../shared/models/launches/launch-detail.model';
 
 @Injectable({
   providedIn: 'root',
@@ -36,5 +37,9 @@ export class LaunchesService {
       `${this.url}/GetPastLaunches`,
       params
     );
+  }
+
+  getLaunchDetails(id: string): Observable<LaunchDetail> {
+    return this.restService.get<LaunchDetail>(`${this.url}/GetLaunchDetails`, id);
   }
 }
