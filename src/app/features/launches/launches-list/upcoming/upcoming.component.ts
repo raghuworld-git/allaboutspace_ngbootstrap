@@ -14,19 +14,20 @@ import { QuickLinksComponent } from '../../../../shared/components/quick-links/q
 import { ConvertDateToNativePipe } from '../../../../utilities/pipes/convert-date-to-native.pipe';
 import { CardLoadingPlaceholderLargeComponent } from '../../../../shared/components/card-loader/card-loading-placeholder-large/card-loading-placeholder-large.component';
 import { CardLoadingPlaceholderSmallComponent } from '../../../../shared/components/card-loader/card-loading-placeholder-small/card-loading-placeholder-small.component';
+import { FloatingMenuComponent } from '../../../../shared/components/floating-menu/floating-menu.component';
 @Component({
   selector: 'app-launches-list',
   standalone: true,
   imports: [
     CommonModule,
     RouterLink,
-    RouterLinkActive,
-    ConvertDateToNativePipe,
+    RouterLinkActive,    
     PaginationComponent,
     CommonLayoutWithProjectionsComponent,
     QuickLinksComponent,
     CardLoadingPlaceholderLargeComponent,
     CardLoadingPlaceholderSmallComponent,
+    FloatingMenuComponent,
     NgIconComponent,
   ],
   providers: [
