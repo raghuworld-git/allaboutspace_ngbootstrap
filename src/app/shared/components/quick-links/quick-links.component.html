@@ -1,0 +1,60 @@
+<div class="row shadow rounded py-2">
+  <div class="col-12 text-center">
+    <h6 class="fw-bold">
+      <ng-icon style="display: inline" name="iconoirLink"></ng-icon> Quick Links
+    </h6>
+  </div>
+  <div class="col-12">
+    <div class="row g-1 text-uppercase">
+      @if(!disableUpcoming){
+      <div class="col">
+        <div class="card text-bg-secondary">
+          <div class="card-body text-center">
+            Upcoming
+            <a
+              [routerLink]="['/launches', 'upcoming']"
+              class="stretched-link"
+            ></a>
+          </div>
+        </div>
+      </div>
+      } @if(!disablePrevious){
+      <div class="col">
+        <div class="card text-bg-primary">
+          <div class="card-body text-center">
+            Previous
+            <a
+              [routerLink]="['/launches', 'previous']"
+              class="stretched-link"
+            ></a>
+          </div>
+        </div>
+      </div>
+      } @if(!disableAstronauts){
+      <div class="col">
+        <div class="card text-bg-danger">
+          <div class="card-body text-center">Astronauts</div>
+          <a routerLink="/astronauts" class="stretched-link"></a>
+        </div>
+      </div>
+      }
+      <div class="col">
+        <div class="card text-bg-warning">
+          <div class="card-body text-center">ISRO</div>
+        </div>
+      </div>
+      @if(!disableNews){
+      <div class="col">
+        <div class="card text-bg-info">
+          <div class="card-body text-center">News</div>
+        </div>
+      </div>
+      }
+      <div class="col-12">
+        <div class="card text-bg-info">
+          <div class="card-body text-center">Search launches</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

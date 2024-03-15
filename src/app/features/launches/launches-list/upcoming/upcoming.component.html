@@ -1,0 +1,147 @@
+<app-common-layout-with-projections>
+  <ng-container content>
+    <div class="row">
+      <div class="col-lg-9 fw-bold text-uppercase h6">Upcoming launches</div>
+      <div class="pt-2 col-lg-9">
+        <app-pagination
+          [totalItemsCount]="totalItemCount"
+          (pageChangeEvent)="onPageChangeEvent($event)"
+          [disablePagination]="disablePagination"
+          [pageSize]="pageLimit"
+        ></app-pagination>
+      </div>
+    </div>
+    <div class="row">
+      @if(launchList$ | async ; as launchList){ @for(item of
+      launchList.results;track item.id ){
+      <div class="d-none d-md-block col-md-12">
+        <div class="card large-screen-card shadow mb-3">
+          <div class="row g-0">
+            <div class="col-4">
+              <img
+                [src]="item.image"
+                class="img-fluid rounded"
+                [alt]="item.name"
+              />
+            </div>
+            <div class="col-8 px-3">
+              <div class="card-body">
+                <h6
+                  class="card-title fw-bold d-inline-block text-truncate w-100"
+                  [title]="item.name"
+                >
+                  {{ item.name }}
+                </h6>
+                <p class="d-inline-block mb-1 text-truncate w-100">
+                  <span style="font-size: 0.75em"> by </span>
+                  <span
+                    title="Launch Service Provider"
+                    class="badge text-bg-light"
+                    >{{ item.lsp_name }}</span
+                  >
+                </p>
+                <p class="card-text d-inline-block mb-0 text-truncate w-100">
+                  <span
+                    [title]="item.status.description"
+                    [class]="[
+                      'badge',
+                      'text-bg-' + getStatusColor(item.status.abbrev)
+                    ]"
+                    >{{ item.status.name }}</span
+                  >
+                </p>
+                <p class="card-text mb-0 d-inline-block text-truncate w-100">
+                  <ng-icon
+                    style="display: inline"
+                    name="iconoirAlarm"
+                  ></ng-icon>
+                  {{ item.net | date : "MMM dd, yyyy 'at' hh:mm a" }}
+                </p>
+                <p class="card-text mb-0 d-inline-block text-truncate w-100">
+                  <ng-icon style="display: inline" name="iconoirPin"></ng-icon>
+                  {{ item.location }}
+                </p>
+
+                <a
+                  [routerLink]="['/launches', 'details', item.id]"
+                  class="btn btn-sm btn-outline-warning stretched-link text-uppercase"
+                  style="
+                    --bs-btn-padding-y: 0.25rem;
+                    --bs-btn-padding-x: 0.5rem;
+                    --bs-btn-font-size: 0.75rem;
+                  "
+                  >More about the Launch
+                  <ng-icon
+                    style="display: inline"
+                    name="iconoirArrowRight"
+                  ></ng-icon
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-xs-block d-md-none col-xs-12 mb-2">
+        <div class="card shadow w-100">
+          <img
+            [src]="item.image"
+            class="card-img-top img-fluid rounded"
+            [alt]="item.name"
+          />
+          <div class="card-body">
+            <h6
+              class="card-title fw-bold d-inline-block text-truncate m-0 w-100"
+              [title]="item.name"
+            >
+              {{ item.name }}
+            </h6>
+            <p class="d-inline-block mb-1 text-truncate w-100">
+              <span style="font-size: 0.75em"> by </span>
+              <span
+                title="Launch Service Provider"
+                class="badge text-bg-light"
+                >{{ item.lsp_name }}</span
+              >
+            </p>
+            <p class="card-text d-inline-block mb-0 text-truncate w-100">
+              <span
+                [title]="item.status.description"
+                [class]="[
+                  'badge',
+                  'text-bg-' + getStatusColor(item.status.abbrev)
+                ]"
+                >{{ item.status.name }}</span
+              >
+            </p>
+            <p class="card-text mb-0 d-inline-block text-truncate w-100">
+              <ng-icon style="display: inline" name="iconoirAlarm"></ng-icon>
+              {{ item.net | date : "MMM dd, yyyy 'at' hh:mm a" }}
+            </p>
+            <p class="card-text mb-0 d-inline-block text-truncate w-100">
+              <ng-icon style="display: inline" name="iconoirPin"></ng-icon>
+              {{ item.location }}
+            </p>
+            <a
+              [routerLink]="['/launches', 'details', item.id]"
+              class="stretched-link"
+            >
+            </a>
+          </div>
+        </div>
+      </div>
+      } } @else{ @for(placeholder of [1,2];track $index){
+      <div
+        class="d-none d-md-block col-md-12 p-0 my-1 shadow bg-body-tertiary rounded"
+      >
+        <app-card-loading-placeholder-large></app-card-loading-placeholder-large>
+      </div>
+      <div class="d-xs-block d-md-none col-xs-12 mb-2">
+        <app-card-loading-placeholder-small></app-card-loading-placeholder-small>
+      </div>
+      } }
+    </div>
+  </ng-container>
+  <ng-container side>
+    <app-quick-links [disableUpcoming]="true"></app-quick-links>
+  </ng-container>
+</app-common-layout-with-projections>

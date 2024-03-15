@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonLayoutWithProjectionsComponent } from '../../../shared/components/common-layout-with-projections/common-layout-with-projections.component';
+import { QuickLinksComponent } from '../../../shared/components/quick-links/quick-links.component';
 
 @Component({
   selector: 'app-astronaut-list',
   standalone: true,
-  imports: [],
+  imports: [CommonLayoutWithProjectionsComponent, QuickLinksComponent],
   templateUrl: './astronaut-list.component.html',
-  styleUrl: './astronaut-list.component.scss'
+  styleUrl: './astronaut-list.component.scss',
 })
-export class AstronautListComponent {
-
-}
+export class AstronautListComponent {}

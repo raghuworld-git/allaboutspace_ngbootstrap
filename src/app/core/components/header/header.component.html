@@ -1,6 +1,10 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-1-strong">
+<nav
+  class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-1-strong"
+>
   <div class="container-fluid">
-    <a class="navbar-brand logo-font" style="font-weight: bolder;" routerLink="/">ALL ABOUT SPACE</a>
+    <a class="navbar-brand logo-font" style="font-weight: bolder" routerLink="/"
+      >ALL ABOUT SPACE</a
+    >
     <button
       class="navbar-toggler"
       type="button"
@@ -14,13 +18,27 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav logo-font">
-        <a class="nav-link" routerLinkActive="active text-warning" routerLink="launches/upcoming"
-          >Launches </a
-        >       
-        <a class="nav-link" routerLinkActive="active text-warning" routerLink="astronauts"
+        <a
+          class="nav-link"
+          routerLinkActive="active text-warning"
+          routerLink="launches/upcoming"
+          >Launches
+        </a>
+        <a
+          class="nav-link"
+          routerLinkActive="active text-warning"
+          routerLink="astronauts"
           >Astronauts</a
         >
       </div>
+    </div>
+  </div>
+</nav>
+<nav class="navbar sticky-top2" style="background-color: #31363b">
+  <div class="container-fluid justify-content-end">
+    <div class="fs-6" style="font-size: 85% !important">
+      Showing all time in TimeZone : 
+      <span class="text-warning"> {{ getBrowserTimeZone() }}</span>
     </div>
   </div>
 </nav>

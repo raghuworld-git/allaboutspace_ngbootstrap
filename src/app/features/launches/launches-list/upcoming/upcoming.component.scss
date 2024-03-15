@@ -1,0 +1,13 @@
+.large-screen-card {
+  height: 210px !important;
+  width: 100%;
+  .card-text{
+    font-size: 88%;    
+  }  
+}
+
+ .card img ,.custom-placeholder-height {
+  height: 210px !important;
+  object-fit: cover;
+  width: 100%;
+}

@@ -18,7 +18,7 @@ export class LaunchesService {
   }
 
   getUpcomingLaunchesList(
-    limit: number = 8,
+    limit: number = 5,
     offset: number = 10
   ): Observable<CommonResponse<LaunchList>> {
     let params = new HttpParams().set('limit', limit).set('offset', offset);
@@ -29,7 +29,7 @@ export class LaunchesService {
   }
 
   getPastLaunchesList(
-    limit: number = 8,
+    limit: number = 5,
     offset: number = 10
   ): Observable<CommonResponse<LaunchList>> {
     let params = new HttpParams().set('limit', limit).set('offset', offset);
