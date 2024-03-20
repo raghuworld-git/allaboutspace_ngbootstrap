@@ -17,7 +17,7 @@ import { iconoirLink } from '@ng-icons/iconoir';
 })
 export class QuickLinksComponent {
   @Input() disableUpcoming: boolean = false;
-  @Input() disablePrevious: boolean = false;
+  @Input() disableSearchlaunches: boolean = false;
   @Input() disableAstronauts: boolean = false;
   @Input() disableAgencies: boolean = false;
   @Input() disableNews: boolean = false;

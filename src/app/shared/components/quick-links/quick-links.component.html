@@ -1,4 +1,4 @@
-<div class="row shadow rounded py-2">
+<div class="row bg-body-tertiary rounded ms-1 py-2">
   <div class="col-12 text-center">
     <h6 class="fw-bold">
       <ng-icon style="display: inline" name="iconoirLink"></ng-icon> Quick Links
@@ -18,11 +18,11 @@
           </div>
         </div>
       </div>
-      } @if(!disablePrevious){
-      <div class="col">
-        <div class="card text-bg-primary">
+      } @if(!disableSearchlaunches){
+      <div class="col-12">
+        <div class="card text-bg-info">
           <div class="card-body text-center">
-            Previous
+            Previous launches
             <a
               [routerLink]="['/launches', 'previous']"
               class="stretched-link"
@@ -50,11 +50,6 @@
         </div>
       </div>
       }
-      <div class="col-12">
-        <div class="card text-bg-info">
-          <div class="card-body text-center">Search launches</div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

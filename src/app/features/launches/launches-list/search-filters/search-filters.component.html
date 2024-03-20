@@ -1,0 +1,46 @@
+<div class="row bg-body-tertiary py-3 rounded">
+  <div class="col-12 fs-6">Select an year :</div>
+  <div class="col-12 mb-2">
+    <div class="scroll">
+      <div
+        class="btn-group btn-group-sm mb-1"
+        role="group"
+        aria-label="Launch Year"
+      >
+        @for (year of getlaunchesYearRange(); track $index) {
+        <input
+          type="radio"
+          class="btn-check"
+          name="radio-launches-filter"
+          [id]="year"
+          autocomplete="off"
+          [checked]="$index == 0"
+        />
+        <label
+          class="btn btn-outline-secondary rounded mx-1 my-1 h6"
+          [for]="year"
+          >{{ year }}</label
+        >
+        }
+      </div>
+    </div>
+  </div>
+  <div class="col-12 mt-1">
+    <div class="row g-1">
+      <div class="col-6">
+        <ng-multiselect-dropdown
+          [settings]="dropdownSettings"
+          [data]="listOflaunchStatus"
+          placeholder="Filter by Status"
+        ></ng-multiselect-dropdown>
+      </div>
+      <div class="col-6">
+        <ng-multiselect-dropdown
+          [settings]="dropdownSettings"
+          [data]="listOflaunchStatus"
+          placeholder="Filter by Agency"
+        ></ng-multiselect-dropdown>
+      </div>
+    </div>
+  </div>
+</div>

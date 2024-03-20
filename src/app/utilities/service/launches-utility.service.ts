@@ -2,41 +2,13 @@ interface iconsColorModel {
   iconName: string;
   color: string;
 }
-
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { launchStatusStaticData } from '../static-data/launch-data.data';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class StatusColorService {
+@Injectable({ providedIn: 'root' })
+export class LaunchesUtilityService {
   constructor() {}
-
-  // getStatusColor(status: string): string {
-  //   let statusColor: string = '';
-  //   switch (status.toLocaleLowerCase()) {
-  //     case "In Flight".toLocaleLowerCase():
-  //       statusColor = 'warning';
-  //       break;
-  //     case "TBC".toLocaleLowerCase():
-  //     case "TBD".toLocaleLowerCase():
-  //       statusColor = 'info';
-  //       break;
-  //     case "Go".toLocaleLowerCase():
-  //     case "Success".toLocaleLowerCase():
-  //       statusColor = 'success';
-  //       break;
-  //     case "Hold".toLocaleLowerCase():
-  //       statusColor = 'secondary';
-  //       break;
-  //     case "Failure".toLocaleLowerCase():
-  //     case "Partial Failure".toLocaleLowerCase():
-  //       statusColor = 'danger';
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  //   return statusColor;
-  // }
 
   getStatusColorforIcon(status: string): iconsColorModel {
     let iconsColorModel!: iconsColorModel;
@@ -77,17 +49,15 @@ export class StatusColorService {
     switch (status.toLocaleLowerCase()) {
       case 'In Flight'.toLocaleLowerCase():
       case 'Go'.toLocaleLowerCase():
-        statusColor = 'warning';
-        break;
-      case 'TBC'.toLocaleLowerCase():
-      case 'TBD'.toLocaleLowerCase():
-        statusColor ='info';
-        break;
       case 'Success'.toLocaleLowerCase():
         statusColor = 'success';
         break;
+      case 'TBC'.toLocaleLowerCase():
+      case 'TBD'.toLocaleLowerCase():
+        statusColor = 'info';
+        break;
       case 'Hold'.toLocaleLowerCase():
-        statusColor = 'secondary';
+        statusColor = 'warning';
         break;
       case 'Failure'.toLocaleLowerCase():
       case 'Partial Failure'.toLocaleLowerCase():
@@ -98,4 +68,21 @@ export class StatusColorService {
     }
     return statusColor;
   }
+
+  getlaunchYearsFromStart(): number[] {
+    const range = (start: number, stop: number, step: number) =>
+      Array.from(
+        { length: (stop - start) / step + 1 },
+        (_, i) => start + i * step
+      );
+    let firstLaunchYear: number = environment.LAUNCH_START_YEAR;
+    let currentYear = new Date().getFullYear();
+    return range(currentYear, firstLaunchYear, -1);
+  }
+
+  getLaunchStatusListForDrownDown() {
+    return [...launchStatusStaticData];
+  }
+
+  getAgencyListForDropdown() {}
 }

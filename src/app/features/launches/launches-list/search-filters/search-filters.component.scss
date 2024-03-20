@@ -1,0 +1,18 @@
+.scroll {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.btn-check:checked + .btn {
+  background-color: #ffc107 !important;
+  color: black !important;
+  font-weight: bolder;
+  border-color: #ffc107 !important;
+}
+
+.btn-check + .btn {
+  background-color: transparent !important;
+  color: white !important;
+  font-weight: lighter;
+  border-color: white !important;
+}

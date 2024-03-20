@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LaunchList } from '../../../../shared/models/launches/launch-list.model';
-import { StatusColorService } from '../../../../utilities/service/status-color.service';
 import { LaunchesService } from '../../launches.service';
 import { CommonResponse } from '../../../../shared/models/common-response.model';
 import { Observable, map } from 'rxjs';
@@ -11,10 +10,10 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { iconoirPin, iconoirAlarm, iconoirArrowRight } from '@ng-icons/iconoir';
 import { CommonLayoutWithProjectionsComponent } from '../../../../shared/components/common-layout-with-projections/common-layout-with-projections.component';
 import { QuickLinksComponent } from '../../../../shared/components/quick-links/quick-links.component';
-import { ConvertDateToNativePipe } from '../../../../utilities/pipes/convert-date-to-native.pipe';
 import { CardLoadingPlaceholderLargeComponent } from '../../../../shared/components/card-loader/card-loading-placeholder-large/card-loading-placeholder-large.component';
 import { CardLoadingPlaceholderSmallComponent } from '../../../../shared/components/card-loader/card-loading-placeholder-small/card-loading-placeholder-small.component';
 import { FloatingMenuComponent } from '../../../../shared/components/floating-menu/floating-menu.component';
+import { LaunchesUtilityService } from '../../../../utilities/service/launches-utility.service';
 @Component({
   selector: 'app-launches-list',
   standalone: true,
@@ -42,7 +41,7 @@ import { FloatingMenuComponent } from '../../../../shared/components/floating-me
 })
 export class UpcomingComponent implements OnInit {
   constructor(
-    private statusColorService: StatusColorService,
+    private launchesUtilityService: LaunchesUtilityService,
     private launchService: LaunchesService
   ) {}
 
@@ -70,7 +69,7 @@ export class UpcomingComponent implements OnInit {
   }
 
   getStatusColor(status: string) {
-    return this.statusColorService.getStatusColor(status);
+    return this.launchesUtilityService.getStatusColor(status);
   }
 
  

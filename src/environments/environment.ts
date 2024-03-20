@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    production: false,
-    LL2_BASE_URL:'https://raghuworld1992-001-site1.ctempurl.com/api'
-  };
+  production: false,
+  LL2_BASE_URL: 'https://raghuworld1992-001-site1.ctempurl.com/api',
+  LAUNCH_START_YEAR: 1957,
+};

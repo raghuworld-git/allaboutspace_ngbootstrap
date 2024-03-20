@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonLayoutWithProjectionsComponent } from '../../../../shared/components/common-layout-with-projections/common-layout-with-projections.component';
 import { QuickLinksComponent } from '../../../../shared/components/quick-links/quick-links.component';
-import { StatusColorService } from '../../../../utilities/service/status-color.service';
 import { LaunchesService } from '../../launches.service';
 import { Observable, map } from 'rxjs';
 import { CommonResponse } from '../../../../shared/models/common-response.model';
@@ -13,7 +12,9 @@ import { iconoirPin, iconoirAlarm, iconoirArrowRight } from '@ng-icons/iconoir';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
-import { FloatingMenuComponent } from '../../../../shared/components/floating-menu/floating-menu.component';
+import { SearchFiltersComponent } from '../search-filters/search-filters.component';
+import { LaunchesUtilityService } from '../../../../utilities/service/launches-utility.service';
+
 
 @Component({
   selector: 'app-previous',
@@ -23,7 +24,7 @@ import { FloatingMenuComponent } from '../../../../shared/components/floating-me
     QuickLinksComponent,
     CardLoadingPlaceholderLargeComponent,
     CardLoadingPlaceholderSmallComponent,
-    FloatingMenuComponent,
+    SearchFiltersComponent,
     PaginationComponent,
     NgIconComponent,
     RouterLink,
@@ -40,9 +41,9 @@ import { FloatingMenuComponent } from '../../../../shared/components/floating-me
   templateUrl: './previous.component.html',
   styleUrl: './previous.component.scss',
 })
-export class PreviousComponent implements OnInit {
+export class PreviousLaunchesComponent implements OnInit {
   constructor(
-    private statusColorService: StatusColorService,
+    private launchesUtilityService: LaunchesUtilityService,
     private launchService: LaunchesService
   ) {}
 
@@ -70,7 +71,7 @@ export class PreviousComponent implements OnInit {
   }
 
   getStatusColor(status: string) {
-    return this.statusColorService.getStatusColor(status);
+    return this.launchesUtilityService.getStatusColor(status);
   }
 
   onPageChangeEvent(currentPage: number) {
