@@ -132,7 +132,7 @@
       </div>
       } } @else{ @for(placeholder of [1,2];track $index){
       <div
-        class="d-none d-md-block col-md-12 p-0 my-1 shadow bg-body-tertiary rounded"
+        class="d-none d-md-block col-md-12 my-1  rounded"
       >
         <app-card-loading-placeholder-large></app-card-loading-placeholder-large>
       </div>
@@ -143,11 +143,6 @@
     </div>
   </ng-container>
   <ng-container side>
-    <div class="d-none d-md-block">
-      <app-quick-links [disableUpcoming]="true"></app-quick-links>
-    </div>
-    <div class="d-xs-block d-md-none">
-      <app-floating-menu [disableUpcoming]="true"></app-floating-menu>
-    </div>
+    <app-quick-links [disableUpcoming]="true"></app-quick-links>
   </ng-container>
 </app-common-layout-with-projections>

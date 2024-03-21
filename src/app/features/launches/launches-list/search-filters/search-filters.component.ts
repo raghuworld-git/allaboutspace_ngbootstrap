@@ -2,15 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { LaunchesUtilityService } from '../../../../utilities/service/launches-utility.service';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { iconoirInfoCircle } from '@ng-icons/iconoir';
-import {
-  NgMultiSelectDropDownModule,
-  IDropdownSettings,
-} from 'ng-multiselect-dropdown';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-search-filters',
   standalone: true,
-  imports: [NgMultiSelectDropDownModule],
+  imports: [ ],
   templateUrl: './search-filters.component.html',
   styleUrl: './search-filters.component.scss',
   providers: [
@@ -22,7 +20,7 @@ import {
 export class SearchFiltersComponent implements OnInit {
   firstOflaunchYear: number;
   listOflaunchStatus: { id: number; name: string }[];
-  dropdownSettings: IDropdownSettings = {};
+  selectedlaunchStatus!: number;
 
   private listofAllLaunchyears: number[];
 
@@ -36,14 +34,14 @@ export class SearchFiltersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'id',
-      textField: 'name',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      allowSearchFilter: true,
-    };
+    // this.dropdownSettings = {
+    //   singleSelection: false,
+    //   idField: 'id',
+    //   textField: 'name',
+    //   selectAllText: 'Select All',
+    //   unSelectAllText: 'UnSelect All',
+    //   allowSearchFilter: true,
+    // };
   }
 
   getlaunchesYearRange(): number[] {
